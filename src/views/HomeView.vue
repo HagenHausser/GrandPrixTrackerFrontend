@@ -26,9 +26,6 @@ import axios from 'axios';
       }
   }
 
-  const races = [{name: "Canada", country: "Canada", year:"2023", winner:"Max Verstappen"},
-  {name: "Bahrain", country: "Bahrain", year:"2023", winner:"Max Verstappen"},
-  {name: "Hungary", country: "Hungary", year:"2023", winner:"Max Verstappen"}]
 </script>
 
 <template>
