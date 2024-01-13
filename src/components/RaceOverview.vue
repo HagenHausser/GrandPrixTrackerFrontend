@@ -2,9 +2,6 @@
   import RacePosition from "@/components/RacePosition.vue";
   import type {GrandPrix} from "@/models/GrandPrix";
 
-  /*const year: number = defineModel();
-  const round: number = defineModel();*/
-
   defineProps<{
     year: number,
     grandPrix: GrandPrix
@@ -20,16 +17,20 @@ export default {
   data() {
     return {
         race: null as Race,
+        emitt: this.emitter
       }
     }
   ,
   methods: {
-    async getRaceData() {
+    getRaceData() {
+      console.log('non async emitter: ', this.emitter)
       try {
         this.race = null;
-        const response = await axios.get(`http://localhost:8080/api/race/${this.year}/${this.grandPrix.round}`)
-        this.race = response.data;
-        this.emitter.emit('race-data-loaded');
+        axios.get(`http://localhost:8080/api/race/${this.year}/${this.grandPrix.round}`).then(response => {
+          this.race = response.data;
+          console.log('then emitter: ', this.emitter)
+          this.emitter.emit('race-data-loaded');
+        })
       } catch (error) {
         console.log(error)
       }
@@ -45,7 +46,6 @@ export default {
       if (!this.year && !this.grandPrix.round && !this.grandPrix.raceName) return;
       try {
         let fav = new FavouriteRace(this.year, this.grandPrix.round, this.grandPrix.raceName, this.grandPrix.raceReportUrl);
-        //let fav = { season: this.year, round: this.grandPrix.round, raceName: this.grandPrix.raceName }
         const response = await axios.post(`http://localhost:8080/api/favourite/add`, fav)
         if(response.status == 200) {
          this.race.isFavourite = true;
@@ -65,12 +65,22 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    newFunc() {
+      console.log('inside nested function ', this.emitt)
+      console.log('inside nested function2 ', this.year)
     }
   },
   created() {
+    this.emitter.on('test', () => {
+      console.log('inside function1 ', this.emitt)
+      console.log('inside function ', this.emitter)
+      this.newFunc();
+    });
     this.emitter.on('reload-race-data', () => {
       this.race = null;
       this.getRaceData();
+      console.log(this.emitter)
     });
 
   }

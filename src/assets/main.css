@@ -12,7 +12,7 @@
 
 .form-select {
   margin: 0.5em 0;
-  background-color: #dfcbc5 !important;
+  background-color: #F0F0F0 !important;
 }
 
 .race-results {
@@ -23,13 +23,13 @@
 }
 
 .nav-link.active {
-  color: #e10600 !important;
-  background-color: #dfcbc5 !important;
+  color: #000000 !important;
+  background-color: #F0F0F0 !important;
 }
 
 .nav-link:not(.active) {
-  color: var(--color-text);
-  background-color: #cdaea4;
+  color: #E7473C;
+  background-color: #d3d3d3;
 }
 
 .nav-link:not(.active):hover {

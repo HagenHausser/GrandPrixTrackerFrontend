@@ -193,11 +193,11 @@ import axios from 'axios';
   }
 
   .lang-btn.active {
-    border: #cdaea4 solid 3px;
+    border: #E7473C solid 3px;
   }
 
   h1 {
-    color: #e10600;
+    color: #E7473C;
   }
 
   .fav-content {
@@ -214,13 +214,13 @@ import axios from 'axios';
   }
 
   #save-btn {
-    background-color: white;
-    color: #e10600;
-    border-color: #e10600;
+    background-color: #F0F0F0;
+    color: #000000;
+    border-color: #000000;
   }
 
   #save-btn:hover {
-    background: #e10600;
+    background: #E7473C;
     color: white;
   }
 </style>
