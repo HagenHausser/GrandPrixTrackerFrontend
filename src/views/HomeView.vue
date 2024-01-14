@@ -140,7 +140,7 @@ import axios from 'axios';
             <RaceOverview v-if="selectedYear && selectedGrandPrix"
                           :year="selectedYear" :grandPrix="selectedGrandPrix"/>
           </b-tab>
-          <b-tab :title="$t('favourite')" active>
+          <b-tab :title="$t('favourite')">
             <b-form-select v-model="selectedFavourite" v-on:change="emitReloadRaceData()">
               <b-form-select-option v-if="!selectedFavourite" :value="null">{{ $t("pick-favourite") }}</b-form-select-option>
               <option v-for="fav in favourites" :value="fav">{{fav.raceName}} | {{fav.season}}</option>
